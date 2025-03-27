@@ -52,3 +52,28 @@ salesRep1.addClient(firstCustomer);
 salesRep1.addClient(secondCustomer);
 console.log(`Sales Rep Clients: ${salesRep1.clients}`);
 console.log(`Total Spent for Client: $${salesRep1.getClientTotal("casey")}`);
+
+// Task 3: 
+
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+        super(name, email);
+        this.vipLevel = vipLevel;
+    }
+
+     addPurchase(amount) {
+        super.addPurchase(amount);
+    }
+
+    getTotalSpent() {
+
+    // Setting a variable equal to the result of getTotalSpent, then increasing it by 10%
+        const initialAmount = super.getTotalSpent();
+        const vipBonus = initialAmount * 1.1;
+        return vipBonus.toFixed(2);
+    }
+};
+
+const specialCustomer = new VIPCustomer("gary", "gary@garymail.com", "Gold");
+specialCustomer.addPurchase(600);
+console.log(`Vip Customer Total Spent: $${specialCustomer.getTotalSpent()}`);
